@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { left, right } from 'fp-ts/lib/Either'
-export const httpGet = <T>(url:string) =>
-        axios.get(url)
-            .then(r => right(r.data))
-            .catch(left);
+import {tryCatch} from "fp-ts/lib/TaskEither";
 
+export const httpGet = <T>(url:string) => tryCatch<Error, T>(
+    () => axios.get(url).then(resp => resp.data),
+    reason => new Error(String(reason))
+);
