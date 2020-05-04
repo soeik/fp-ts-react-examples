@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { EitherExample } from "./EitherExample";
+import {MultipleRequestsExamples} from "./MultipleRequestsExample";
 
 export default function App() {
     const [eitherExampleType, setEitherExampleType] = useState('loading');
@@ -12,6 +13,9 @@ export default function App() {
             </div>
             <hr/>
             <EitherExample type={eitherExampleType} />
+            <hr/>
+            Multiple requests example:
+            <MultipleRequestsExamples/>
         </div>
     );
 }
